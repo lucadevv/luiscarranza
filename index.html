@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Your Flutter App</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="description" content="A new Flutter project.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="flutter_app">
+  <meta name="apple-mobile-web-app-title" content="flutter_app">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Add to home screen for Chrome on Android -->
+  <meta name="msapplication-navbutton-color" content="#ffffff">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="icons/Icon-192.png">
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <script>
+    var serviceWorkerVersion = '{{flutter_service_worker_version}}';
+  </script>
+</head>
+
+<body>
+  <script src="flutter.js"></script>
+  <script>
+    // The service worker has to be registered on load to capture the initial request for .html and .js.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=' + serviceWorkerVersion);
+      });
+    }
+  </script>
+  <script>
+    (function () {
+      var loader = new FlutterLoader();
+      loader.load({
+        entrypoint: "main.dart.js",
+      });
+    })();
+  </script>
+  <script defer src="main.dart.js"></script>
+</body>
+
+</html>
